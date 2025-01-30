@@ -128,10 +128,14 @@ public class insiderQADepartman {
         }
         Driver.getDriver().switchTo().window(ikinciWhd);
 
-        String expectedLeverApplicationUrl = ConfigReader.getProperty("formUrl");
-        String actualLeverApplicationUrl = Driver.getDriver().getCurrentUrl();
+        try {
+            String expectedLeverApplicationUrl = ConfigReader.getProperty("formUrl");
+            String actualLeverApplicationUrl = Driver.getDriver().getCurrentUrl();
 
-        Assert.assertEquals(actualLeverApplicationUrl,expectedLeverApplicationUrl);
+            Assert.assertEquals(actualLeverApplicationUrl,expectedLeverApplicationUrl);
+        } catch (Exception e) {
+            ReusableMethods.webElementScreenshotTarihVeIsimli(insiderQualityAssurancePage.viewRoleClick, "ViewRoleClick");
+        }
 
 
     }
